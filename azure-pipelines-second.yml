@@ -6,20 +6,40 @@
 trigger: none
 
 resources:
+  builds:
   pipelines:
-    - pipeline: PipelineFirst
+    - pipeline: BuildPublishPipeline
       source: jndz2.ado-multiple-pipelines-first
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: DownloadPipelineArtifact@2
+
+- script: |
+    echo $(resource.pipeline.BuildPublishPipeline.pipelineID)
+    echo $(resource.pipeline.BuildPublishPipeline.runName)
+    echo $(resource.pipeline.BuildPublishPipeline.runID)
+    echo $(resource.pipeline.BuildPublishPipeline.runURI)
+    echo $(resource.pipeline.BuildPublishPipeline.sourceBranch)
+    echo $(resource.pipeline.BuildPublishPipeline.sourceCommit)
+    echo $(resource.pipeline.BuildPublishPipeline.sourceProvider)
+    echo $(resource.pipeline.BuildPublishPipeline.requestedFor)
+    echo $(resource.pipeline.BuildPublishPipeline.requestedForID)
+
+
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'specific'
+    project: 
+- task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'specific'
     project: 'e8a7895f-8c5b-40a2-9948-e39528c7c75b'
-    definition: '5'
+    pipeline: '5'
     specificBuildWithTriggering: true
-    buildVersionToDownload: 'latest'
+    buildVersionToDownload: 'latestFromBranch'
+    branchName: 'refs/heads/main'
+    downloadType: 'single'
     artifactName: 'drop'
-    targetPath: '$(Pipeline.Workspace)'
+    downloadPath: '$(System.ArtifactsDirectory)'
