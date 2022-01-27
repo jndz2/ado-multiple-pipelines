@@ -16,21 +16,17 @@ pool:
 steps:
 
 - script: |
-    echo $(resource.pipeline.BuildPublishPipeline.pipelineID)
-    echo $(resource.pipeline.BuildPublishPipeline.runName)
-    echo $(resource.pipeline.BuildPublishPipeline.runID)
-    echo $(resource.pipeline.BuildPublishPipeline.runURI)
-    echo $(resource.pipeline.BuildPublishPipeline.sourceBranch)
-    echo $(resource.pipeline.BuildPublishPipeline.sourceCommit)
-    echo $(resource.pipeline.BuildPublishPipeline.sourceProvider)
-    echo $(resource.pipeline.BuildPublishPipeline.requestedFor)
-    echo $(resource.pipeline.BuildPublishPipeline.requestedForID)
+    echo $(resources.pipeline.BuildPublishPipeline.pipelineID)
+    echo $(resources.pipeline.BuildPublishPipeline.runName)
+    echo $(resources.pipeline.BuildPublishPipeline.runID)
+    echo $(resources.pipeline.BuildPublishPipeline.runURI)
+    echo $(resources.pipeline.BuildPublishPipeline.sourceBranch)
+    echo $(resources.pipeline.BuildPublishPipeline.sourceCommit)
+    echo $(resources.pipeline.BuildPublishPipeline.sourceProvider)
+    echo $(resources.pipeline.BuildPublishPipeline.requestedFor)
+    echo $(resources.pipeline.BuildPublishPipeline.requestedForID)
 
 
-- task: DownloadBuildArtifacts@0
-  inputs:
-    buildType: 'specific'
-    project: 
 - task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'specific'
