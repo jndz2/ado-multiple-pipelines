@@ -33,7 +33,8 @@ steps:
     buildType: 'specific'
     project: 'e8a7895f-8c5b-40a2-9948-e39528c7c75b'
     pipeline: BuildPublishPipeline
-    buildVersionToDownload: 'latest'
+    buildVersionToDownload: 'specific'
     downloadType: 'single'
     artifactName: 'drop'
     downloadPath: '$(System.ArtifactsDirectory)'
+    buildId: '$(resources.pipeline.BuildPublishPipeline.runID)'
