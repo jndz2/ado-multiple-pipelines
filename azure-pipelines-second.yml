@@ -6,7 +6,6 @@
 trigger: none
 
 resources:
-  builds:
   pipelines:
     - pipeline: BuildPublishPipeline
       source: jndz2.ado-multiple-pipelines-first
