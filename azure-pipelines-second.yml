@@ -9,6 +9,7 @@ resources:
   pipelines:
     - pipeline: BuildPublishPipeline
       source: jndz2.ado-multiple-pipelines-first
+      trigger: true
 
 pool:
   vmImage: ubuntu-latest
